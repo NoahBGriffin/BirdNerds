@@ -99,6 +99,10 @@ export default {
           if (response.status === 201) {
             const bird = this.bird;
             bird.numSightings++;
+            bird.mostRecentSighting = response.data.dateSpotted;
+            console.log(bird);
+            console.log("******");
+            console.log(response.data);
             this.$store.commit("EDIT_BIRD", bird);
             this.$router.go(0);
           }

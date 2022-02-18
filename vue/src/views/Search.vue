@@ -14,7 +14,6 @@
           v-bind:src="bird.imgUrl + '/embed/400'"
           frameborder="0"
           allowfullscreen
-          scrolling="no"
           style="width: 320px"
         ></iframe>
         <div id="date">Date: {{ bird.dateSpotted }}</div>

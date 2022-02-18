@@ -1,6 +1,7 @@
 <!-- For displaying one "listcard" aka the basic details of a bird -->
 <template>
   <div id="bird-detail">
+    {{bird}}
     <div id="birdPic">
       <iframe
         width="200"
@@ -15,7 +16,7 @@
     <div id="birdInfo" v-show="showForm === false">
       <h2>{{ bird.birdName }}</h2>
       <p>Spotted {{ bird.numSightings }} times</p>
-      <p>Most recently seen on {{ bird.mostRecentSighting }}</p>
+      <p>{{ mostRecentSighting }}</p>
       <p>Zipcode: {{ bird.zipcode }}</p>
       <button v-on:click="showForm = true">Edit bird details</button>
     </div>
@@ -55,6 +56,11 @@ export default {
         (b) => (b.birdID == this.$route.params.birdId)
       );
     },
+    mostRecentSighting() {
+      if (this.bird.mostRecentSighting != null) {
+        return "Most recently seen on " + this.bird.mostRecentSighting
+      } else return "No recently spotted date";
+    }
   },
   methods: {
     updateBird() {
